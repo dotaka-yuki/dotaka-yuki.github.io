@@ -23,13 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
             'nav.skills': 'Skills',
             'nav.interests': 'Interests',
             'nav.awards': 'Awards',
-            
-            'interests.heading': 'Interests',
-            'interests.paragraph1': 'I enjoy spending time outdoors. In winter I ski; in warmer months I enjoy mountain biking and climbing.',
-            'interests.paragraph2': 'I am also interested in technological advancements in robotics and control systems.',
+            'education.heading': 'Education',
             'awards.heading': 'Awards & Certifications',
-            'publications.heading': 'Publications',
-            'presentations.heading': 'Presentations',
         },
         ja: {
             'site.title': '履歴書 - Start Bootstrap テーマ',
@@ -45,12 +40,8 @@ window.addEventListener('DOMContentLoaded', () => {
             'nav.skills': 'スキル',
             'nav.interests': '興味',
             'nav.awards': '受賞歴',
-            
-            
-            
-            'awards.heading': '受賞歴と資格',
-            'publications.heading': '学術論文',
-            'presentations.heading': '学会発表',
+            'education.heading': '学歴',
+            'awards.heading': '受賞歴',
         },
     };
 
@@ -171,7 +162,14 @@ window.addEventListener('DOMContentLoaded', () => {
         if (first) first.textContent = getLocalizedField(data, 'firstName');
         if (last) last.textContent = getLocalizedField(data, 'lastName');
         if (contact) {
-            contact.innerHTML = getLocalizedField(data, 'contact');
+            const affiliation = getLocalizedField(data, 'affiliation');
+            const email = (data.email || '').trim();
+            if (affiliation && email) {
+                contact.innerHTML = `${affiliation} · <a href="mailto:${email}">${email}</a>`;
+            } else {
+                // Backward-compatible fallback for legacy JSON structure.
+                contact.innerHTML = getLocalizedField(data, 'contact');
+            }
         }
         if (lead) lead.textContent = getLocalizedField(data, 'lead');
     }

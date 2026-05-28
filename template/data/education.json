@@ -6,16 +6,16 @@
     "degree_en": "Master's Program",
     "focus_ja": "車輪付きドローン制御",
     "focus_en": "Wheeled drone control",
-    "period": "2024 - 2026 (expected)"
+    "period": "2025 - 在学中"
   },
   {
     "school_ja": "名古屋工業大学",
     "school_en": "Nagoya Institute of Technology",
-    "degree_ja": "学士課程（機械工学）",
-    "degree_en": "Bachelor's Program (Mechanical Engineering)",
-    "focus_ja": "機械工学",
-    "focus_en": "Mechanical Engineering",
-    "period": "2020 - 2024"
+    "degree_ja": "学士課程",
+    "degree_en": "Bachelor's Program",
+    "focus_ja": "電気・機械工学科 機械工学プログラム",
+    "focus_en": "Mechanical Engineering Program, Department of Electrical and Mechanical Engineering",
+    "period": "2023 - 2025"
   },
   {
     "school_ja": "石川工業高等専門学校",
@@ -24,6 +24,6 @@
     "degree_en": "Associate degree",
     "focus_ja": "機械工学科",
     "focus_en": "Department of Mechanical Engineering",
-    "period": "2016 - 2020"
+    "period": "2018 - 2023"
   }
 ]

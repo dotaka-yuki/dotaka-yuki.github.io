@@ -3,8 +3,11 @@
   "firstName_en": "Yuki",
   "lastName_ja": "友樹",
   "lastName_en": "Dotaka",
+  "affiliation_ja": "名古屋工業大学大学院",
+  "affiliation_en": "Nagoya Institute of Technology",
+  "email": "dotaka.yuki.9@gmail.com",
   "contact_ja": "名古屋工業大学大学院 · <a href=\"mailto:dotaka.yuki.9@gmail.com\">dotaka.yuki.9@gmail.com</a>",
   "contact_en": "Nagoya Institute of Technology · <a href=\"mailto:dotaka.yuki.9@gmail.com\">dotaka.yuki.9@gmail.com</a>",
-  "lead_ja": "名古屋工業大学大学院の修士2年生です．車輪付きドローンの制御に関する研究を行っています．特に、ドローンの飛行制御や障害物回避に関するアルゴリズムの開発に取り組んでいます。",
-  "lead_en": "I am a second-year master's student at Nagoya Institute of Technology researching control of wheeled drones. I focus on developing flight control and obstacle-avoidance algorithms."
+  "lead_ja": "名古屋工業大学大学院の修士2年生です．車輪付きドローンの制御に関する研究を行っています．特に，飛行制御に注力しています．",
+  "lead_en": "I am a second-year master's student at Nagoya Institute of Technology. My research focuses on control methods for wheeled drones, with a particular emphasis on flight control."
 }
