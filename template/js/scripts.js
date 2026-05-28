@@ -10,14 +10,16 @@
 window.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
-            'site.title': 'Resume - Dotaka Yuki',
+            'site.title': 'Resume - Yuki Dotaka',
             'site.description': 'A bilingual resume for Yuki Dotaka (Nagoya Institute of Technology).',
             'brand.name': 'Yuki Dotaka',
-            'brand.profileAlt': 'Yuki Dotaka profile picture',
+            'brand.profileAlt': 'Profile picture of Yuki Dotaka',
             'nav.toggle': 'Toggle navigation',
             'nav.about': 'About',
-            'nav.experience': 'Research Experience',
+            'nav.experience': 'Research History',
             'nav.education': 'Education',
+            'nav.presentations': 'Presentations',
+            'nav.publications': 'Publications',
             'nav.skills': 'Skills',
             'nav.interests': 'Interests',
             'nav.awards': 'Awards',
@@ -25,25 +27,23 @@ window.addEventListener('DOMContentLoaded', () => {
             'about.lastName': 'Dotaka',
             'about.contact': 'Nagoya Institute of Technology · <a href="mailto:dotaka.yuki.9@gmail.com">dotaka.yuki.9@gmail.com</a>',
             'about.lead': 'I am a second-year master\'s student at Nagoya Institute of Technology researching control of wheeled drones. I focus on developing flight control and obstacle-avoidance algorithms. (This site is under construction and may contain inaccuracies.)',
-            'experience.heading': 'Research Experience',
+            'experience.heading': 'Research History',
             'experience.job1.title': 'Master\'s Thesis Research',
             'experience.job1.description': 'Developing and evaluating control and obstacle-avoidance methods for autonomous wheeled drones.',
-            'experience.job2.title': 'Laboratory Research Member',
+            'experience.job2.title': 'Laboratory Member',
             'experience.job2.description': 'Collaborating with lab members on sensor integration, algorithm implementation, and experimental validation.',
-            'experience.job3.title': 'Research Assistant',
-            'experience.job3.description': 'Supported prototype testing, documentation, and repeated verification of experimental results.',
-            'experience.job4.title': 'Research Assistant (Additional)',
-            'experience.job4.description': 'Assisted with experiments, data collection, and analysis.',
             'education.heading': 'Academic Background',
-            'education.school1': 'Nagoya Institute of Technology',
+            'education.school1': 'Nagoya Institute of Technology (Graduate School)',
             'education.degree': 'Master\'s Program',
             'education.focus': 'Wheeled drone control',
             'education.gpa1': 'Expected graduation: 2026',
             'education.period1': 'Master\'s student',
             'education.school2': 'Nagoya Institute of Technology',
-            'education.program': 'Mechanical Engineering (Bachelor)',
-            'education.gpa2': 'Mechanical Engineering',
-            'education.period2': 'Bachelor\'s student',
+            'education.program2': 'Department of Electrical and Mechanical Engineering — Mechanical Engineering Program',
+            'education.period2': 'Bachelor\'s degree',
+            'education.school3': 'Ishikawa National College of Technology',
+            'education.program3': 'Department of Mechanical Engineering',
+            'education.period3': 'Associate degree',
             'skills.heading': 'Skills',
             'skills.languagesTools': 'Programming Languages & Tools',
             'skills.workflowHeading': 'Workflow',
@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'skills.workflow4': 'Agile Development & Scrum',
             'interests.heading': 'Interests',
             'interests.paragraph1': 'I enjoy spending time outdoors. In winter I ski; in warmer months I enjoy mountain biking and climbing.',
-            'interests.paragraph2': 'I am also interested in technology advancements in robotics and control systems.',
+            'interests.paragraph2': 'I am also interested in technological advancements in robotics and control systems.',
             'awards.heading': 'Awards & Certifications',
             'publications.heading': 'Publications',
             'presentations.heading': 'Presentations',
@@ -67,6 +67,8 @@ window.addEventListener('DOMContentLoaded', () => {
             'nav.about': '概要',
             'nav.experience': '職歴',
             'nav.education': '学歴',
+            'nav.presentations': '学会発表',
+            'nav.publications': '学術論文',
             'nav.skills': 'スキル',
             'nav.interests': '興味',
             'nav.awards': '受賞歴',
@@ -297,6 +299,14 @@ window.addEventListener('DOMContentLoaded', () => {
             if (it.date) parts.push(it.date);
             if (it.link) parts.push(`<a href="${it.link}" target="_blank" rel="noopener">リンク</a>`);
             li.innerHTML = parts.join(' — ');
+            // 備考（ローカライズ対応）
+            const note = getLocalized(it, 'note');
+            if (note) {
+                const noteDiv = document.createElement('div');
+                noteDiv.className = 'small text-muted mt-1';
+                noteDiv.textContent = note;
+                li.appendChild(noteDiv);
+            }
             ul.appendChild(li);
         });
 

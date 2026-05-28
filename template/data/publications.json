@@ -1,18 +1,18 @@
 [
   {
-    "title_ja": "自律走行車輪付きドローンの制御に関する研究",
-    "title_en": "Study on Control of Autonomous Wheeled Drones",
+    "title_ja": "論文タイトル",
+    "title_en": "Paper Title",
     "authors_ja": "堂高 友樹, 他",
     "authors_en": "Y. Dotaka, et al.",
-    "journal_ja": "ロボティクス研究誌",
-    "journal_en": "Journal of Robotics Research",
+    "journal_ja": "雑誌名",
+    "journal_en": "Journal Name",
     "year": 2025,
     "link": ""
   },
   {
-    "title_en": "Wheeled Drone Control for Indoor Navigation",
+    "title_en": "Paper Title only in English",
     "authors_en": "Y. Dotaka, et al.",
-    "journal_en": "International Journal of Robotics",
+    "journal_en": "Journal Name",
     "year": 2024,
     "link": ""
   }

@@ -1,16 +1,20 @@
 [
   {
-    "title_ja": "自律走行ドローンに関する研究発表",
-    "title_en": "Research on Autonomous Wheeled Drones",
-    "venue_ja": "日本ロボティクス学会 第78回研究会",
-    "venue_en": "The 78th Robotics Society Meeting (Japan)",
-    "date": "2025-03",
-    "link": ""
+    "title_ja": "壁面走行における車輪付きドローンのピッチ角非干渉化制御",
+    "title_en": "Pitch-Decoupled Control for Wall-Running Two-Wheeled Drones",
+    "venue_ja": "計測制御学会 第13回制御部門マルチシンポジウム",
+    "venue_en": "The 13th SICE Multi-Symposium on Control Systems",
+    "date": "2026-03",
+    "link": "",
+    "note_ja": "口頭発表",
+    "note_en": "Oral presentation"
   },
   {
-    "title_en": "Wheeled Drone Navigation Techniques",
-    "venue_en": "ICRA 2024",
-    "date": "2024-05",
-    "link": ""
+    "title_en": "Manual and Autonomous Control System with Pitch-Decoupled Attitude Control for a Two-Wheeled Drone",
+    "venue_en": "ASCC 2026 - The 18th Asian Control Conference",
+    "date": "2026-06",
+    "link": "",
+    "note_ja": "発表予定",
+    "note_en": "Scheduled presentation"
   }
 ]
