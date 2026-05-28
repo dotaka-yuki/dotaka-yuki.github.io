@@ -1,0 +1,29 @@
+[
+  {
+    "school_ja": "名古屋工業大学大学院",
+    "school_en": "Nagoya Institute of Technology (Graduate School)",
+    "degree_ja": "博士前期課程（修士課程）",
+    "degree_en": "Master's Program",
+    "focus_ja": "車輪付きドローン制御",
+    "focus_en": "Wheeled drone control",
+    "period": "2024 - 2026 (expected)"
+  },
+  {
+    "school_ja": "名古屋工業大学",
+    "school_en": "Nagoya Institute of Technology",
+    "degree_ja": "学士課程（機械工学）",
+    "degree_en": "Bachelor's Program (Mechanical Engineering)",
+    "focus_ja": "機械工学",
+    "focus_en": "Mechanical Engineering",
+    "period": "2020 - 2024"
+  },
+  {
+    "school_ja": "石川工業高等専門学校",
+    "school_en": "Ishikawa National College of Technology",
+    "degree_ja": "準学士課程",
+    "degree_en": "Associate degree",
+    "focus_ja": "機械工学科",
+    "focus_en": "Department of Mechanical Engineering",
+    "period": "2016 - 2020"
+  }
+]

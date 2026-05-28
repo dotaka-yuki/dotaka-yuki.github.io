@@ -23,34 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
             'nav.skills': 'Skills',
             'nav.interests': 'Interests',
             'nav.awards': 'Awards',
-            'about.firstName': 'Yuki',
-            'about.lastName': 'Dotaka',
-            'about.contact': 'Nagoya Institute of Technology · <a href="mailto:dotaka.yuki.9@gmail.com">dotaka.yuki.9@gmail.com</a>',
-            'about.lead': 'I am a second-year master\'s student at Nagoya Institute of Technology researching control of wheeled drones. I focus on developing flight control and obstacle-avoidance algorithms. (This site is under construction and may contain inaccuracies.)',
-            'experience.heading': 'Research History',
-            'experience.job1.title': 'Master\'s Thesis Research',
-            'experience.job1.description': 'Developing and evaluating control and obstacle-avoidance methods for autonomous wheeled drones.',
-            'experience.job2.title': 'Laboratory Member',
-            'experience.job2.description': 'Collaborating with lab members on sensor integration, algorithm implementation, and experimental validation.',
-            'education.heading': 'Academic Background',
-            'education.school1': 'Nagoya Institute of Technology (Graduate School)',
-            'education.degree': 'Master\'s Program',
-            'education.focus': 'Wheeled drone control',
-            'education.gpa1': 'Expected graduation: 2026',
-            'education.period1': 'Master\'s student',
-            'education.school2': 'Nagoya Institute of Technology',
-            'education.program2': 'Department of Electrical and Mechanical Engineering — Mechanical Engineering Program',
-            'education.period2': 'Bachelor\'s degree',
-            'education.school3': 'Ishikawa National College of Technology',
-            'education.program3': 'Department of Mechanical Engineering',
-            'education.period3': 'Associate degree',
-            'skills.heading': 'Skills',
-            'skills.languagesTools': 'Programming Languages & Tools',
-            'skills.workflowHeading': 'Workflow',
-            'skills.workflow1': 'Mobile-First, Responsive Design',
-            'skills.workflow2': 'Cross Browser Testing & Debugging',
-            'skills.workflow3': 'Cross Functional Teams',
-            'skills.workflow4': 'Agile Development & Scrum',
+            
             'interests.heading': 'Interests',
             'interests.paragraph1': 'I enjoy spending time outdoors. In winter I ski; in warmer months I enjoy mountain biking and climbing.',
             'interests.paragraph2': 'I am also interested in technological advancements in robotics and control systems.',
@@ -65,34 +38,16 @@ window.addEventListener('DOMContentLoaded', () => {
             'brand.profileAlt': '堂高友樹のプロフィール写真',
             'nav.toggle': 'ナビゲーションを切り替え',
             'nav.about': '概要',
-            'nav.experience': '職歴',
+            'nav.experience': '研究歴',
             'nav.education': '学歴',
             'nav.presentations': '学会発表',
             'nav.publications': '学術論文',
             'nav.skills': 'スキル',
             'nav.interests': '興味',
             'nav.awards': '受賞歴',
-            'about.firstName': '堂高',
-            'about.lastName': '友樹',
-            'about.contact': '名古屋工業大学大学院 · <a href="mailto:dotaka.yuki.9@gmail.com">dotaka.yuki.9@gmail.com</a>',
-            'about.lead': '名古屋工業大学大学院の修士2年生です．車輪付きドローンの制御に関する研究を行っています．特に、ドローンの飛行制御や障害物回避に関するアルゴリズムの開発に取り組んでいます．（ホームページは作成途中のため間違った情報が含まれていることがあります．）',
-            'experience.heading': '研究歴',
-            'experience.job1.title': '修士論文研究',
-            'experience.job1.description': '自律走行する車輪付きドローン向けの制御手法と障害物回避手法を開発・評価しています。',
-            'experience.job2.title': '研究室メンバー',
-            'experience.job2.description': '研究室のメンバーと協力し、センサ統合、アルゴリズム実装、実験検証を行っています。',
-            'education.heading': '学歴',
-            'education.school1': '名古屋工業大学大学院',
-            'education.degree': '博士前期課程（修士課程）',
-            'education.focus': '車輪付きドローン制御',
-            'education.gpa1': '2026年修了予定',
-            'education.period1': '修士課程在籍',
-            'education.school2': '名古屋工業大学',
-            'education.program2': '電気・機械工学科　機械工学プログラム',
-            'education.period2': '学士課程卒業',
-            'education.school3': '石川工業高等専門学校',
-            'education.program3': '機械工学科',
-            'education.period3': '準学士課程卒業',
+            
+            
+            
             'awards.heading': '受賞歴と資格',
             'publications.heading': '学術論文',
             'presentations.heading': '学会発表',
@@ -161,6 +116,10 @@ window.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             applyLanguage(button.dataset.langSwitch);
             // reload data to reflect language change (JSON files may contain bilingual fields)
+            loadAndRenderJSON('data/about.json', renderAbout);
+            loadAndRenderJSON('data/experience.json', renderExperience);
+            loadAndRenderJSON('data/education.json', renderEducation);
+            loadAndRenderJSON('data/awards.json', renderAwards);
             loadAndRenderJSON('data/publications.json', renderPublications);
             loadAndRenderJSON('data/presentations.json', renderPresentations);
         });
@@ -191,23 +150,182 @@ window.addEventListener('DOMContentLoaded', () => {
 
     applyLanguage(initialLanguage);
 
+    // Helpers and renderers for external section data (about, experience, education, awards)
+    function getLocalizedField(it, base) {
+        if (!it) return '';
+        const lang = document.documentElement.lang || 'en';
+        const keyLang = `${base}_${lang}`;
+        if (it[keyLang] && String(it[keyLang]).trim() !== '') return it[keyLang];
+        const keyEn = `${base}_en`;
+        if (it[keyEn] && String(it[keyEn]).trim() !== '') return it[keyEn];
+        if (it[base] && String(it[base]).trim() !== '') return it[base];
+        return '';
+    }
+
+    function renderAbout(data) {
+        if (!data) return;
+        const first = document.querySelector('[data-i18n="about.firstName"]');
+        const last = document.querySelector('[data-i18n="about.lastName"]');
+        const contact = document.querySelector('[data-i18n="about.contact"]');
+        const lead = document.querySelector('[data-i18n="about.lead"]');
+        if (first) first.textContent = getLocalizedField(data, 'firstName');
+        if (last) last.textContent = getLocalizedField(data, 'lastName');
+        if (contact) {
+            contact.innerHTML = getLocalizedField(data, 'contact');
+        }
+        if (lead) lead.textContent = getLocalizedField(data, 'lead');
+    }
+
+    function renderExperience(data) {
+        const container = document.getElementById('experience-list');
+        if (!container) return;
+        container.innerHTML = '';
+        if (!data) return;
+        const items = Array.isArray(data) ? data : (Array.isArray(data.items) ? data.items : []);
+        // optional heading from data
+        if (!Array.isArray(data) && data) {
+            const headingEl = document.querySelector('[data-i18n="experience.heading"]');
+            if (headingEl) {
+                const lang = document.documentElement.lang || 'en';
+                const key = `heading_${lang}`;
+                if (data[key]) headingEl.textContent = data[key];
+            }
+        }
+        if (!items || items.length === 0) return;
+        items.forEach((it) => {
+            const row = document.createElement('div');
+            row.className = 'd-flex flex-column flex-md-row justify-content-between mb-5';
+            const left = document.createElement('div');
+            left.className = 'flex-grow-1';
+            const title = getLocalizedField(it, 'title');
+            const org = getLocalizedField(it, 'organization');
+            const desc = getLocalizedField(it, 'description');
+            if (title) left.innerHTML += `<h3 class="mb-0">${title}</h3>`;
+            if (org) left.innerHTML += `<div class="subheading mb-3">${org}</div>`;
+            if (desc) left.innerHTML += `<p>${desc}</p>`;
+            const right = document.createElement('div');
+            right.className = 'flex-shrink-0';
+            if (it.period) right.innerHTML = `<span class="text-primary">${it.period}</span>`;
+            row.appendChild(left);
+            row.appendChild(right);
+            container.appendChild(row);
+        });
+    }
+
+    function renderEducation(items) {
+        const container = document.getElementById('education-list');
+        if (!container) return;
+        container.innerHTML = '';
+        const eduItems = Array.isArray(items) ? items : (Array.isArray(items && items.items) ? items.items : []);
+        if (!eduItems || eduItems.length === 0) return;
+        // Populate static education-related data-i18n placeholders from JSON
+        try {
+            const mappings = [
+                { key: 'education.school1', idx: 0, base: 'school' },
+                { key: 'education.degree', idx: 0, base: 'degree' },
+                { key: 'education.focus', idx: 0, base: 'focus' },
+                { key: 'education.gpa1', idx: 0, base: 'period' },
+                { key: 'education.period1', idx: 0, base: 'period' },
+                { key: 'education.school2', idx: 1, base: 'school' },
+                { key: 'education.program2', idx: 1, base: 'focus' },
+                { key: 'education.program', idx: 1, base: 'focus' },
+                { key: 'education.period2', idx: 1, base: 'period' },
+                { key: 'education.school3', idx: 2, base: 'school' },
+                { key: 'education.program3', idx: 2, base: 'focus' },
+                { key: 'education.period3', idx: 2, base: 'period' },
+            ];
+            mappings.forEach((m) => {
+                const el = document.querySelector(`[data-i18n="${m.key}"]`);
+                const it = eduItems[m.idx];
+                if (el && it) {
+                    const val = getLocalizedField(it, m.base);
+                    if (val !== undefined && val !== null) el.textContent = val;
+                }
+            });
+        } catch (e) {
+            // ignore any errors when populating static fields
+        }
+        eduItems.forEach((it) => {
+            const row = document.createElement('div');
+            row.className = 'd-flex flex-column flex-md-row justify-content-between mb-5';
+            const left = document.createElement('div');
+            left.className = 'flex-grow-1';
+            const school = getLocalizedField(it, 'school');
+            const degree = getLocalizedField(it, 'degree');
+            const focus = getLocalizedField(it, 'focus');
+            if (school) left.innerHTML += `<h3 class="mb-0">${school}</h3>`;
+            if (degree) left.innerHTML += `<div class="subheading mb-3">${degree}</div>`;
+            if (focus) left.innerHTML += `<div>${focus}</div>`;
+            const right = document.createElement('div');
+            right.className = 'flex-shrink-0';
+            if (it.period) right.innerHTML = `<span class="text-primary">${it.period}</span>`;
+            row.appendChild(left);
+            row.appendChild(right);
+            container.appendChild(row);
+        });
+    }
+
+    function renderAwards(items) {
+        const ul = document.getElementById('awards-list');
+        if (!ul) return;
+        ul.innerHTML = '';
+        const awardItems = Array.isArray(items) ? items : (Array.isArray(items && items.items) ? items.items : []);
+        if (!awardItems || awardItems.length === 0) return;
+        awardItems.forEach((it) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="fa-li"><i class="fas fa-trophy text-warning"></i></span> ${getLocalizedField(it, 'text')}`;
+            ul.appendChild(li);
+        });
+    }
+
+    // Load section data files and render
+    loadAndRenderJSON('data/about.json', renderAbout);
+    loadAndRenderJSON('data/experience.json', renderExperience);
+    loadAndRenderJSON('data/education.json', renderEducation);
+    loadAndRenderJSON('data/awards.json', renderAwards);
+
     // Load and render publications and presentations from JSON files in /data/
     function loadAndRenderJSON(url, renderFn) {
-        fetch(url)
-            .then((resp) => {
-                if (!resp.ok) return [];
-                return resp.json();
-            })
-            .then((data) => {
-                renderFn(Array.isArray(data) ? data : []);
-            })
-            .catch(() => renderFn([]));
+        const tryUrls = (() => {
+            const base = window.location.pathname.replace(/\/[^/]*$/, '/');
+            return [url, './' + url, base + url, '/' + url];
+        })();
+
+        let tried = 0;
+
+        function attempt(nextUrls) {
+            if (!nextUrls || nextUrls.length === 0) {
+                console.error(`loadAndRenderJSON: failed to fetch ${url} after ${tried} attempts`);
+                renderFn(null);
+                return;
+            }
+            const u = nextUrls[0];
+            tried += 1;
+            // Append cache-busting query to avoid stale cached JSON in browser
+            const fetchUrl = u + (u.indexOf('?') !== -1 ? '&' : '?') + 'cb=' + Date.now();
+            fetch(fetchUrl)
+                .then((resp) => {
+                    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                    return resp.json();
+                })
+                .then((data) => {
+                    console.debug(`loadAndRenderJSON: fetched ${u}`);
+                    renderFn(data);
+                })
+                .catch((err) => {
+                    console.warn(`loadAndRenderJSON: fetch ${u} failed: ${err}`);
+                    attempt(nextUrls.slice(1));
+                });
+        }
+
+        attempt(tryUrls);
     }
 
     function renderPublications(items) {
         const container = document.getElementById('publications-list');
         if (!container) return;
-        if (!items || items.length === 0) {
+        const pubItems = Array.isArray(items) ? items : (Array.isArray(items && items.items) ? items.items : []);
+        if (!pubItems || pubItems.length === 0) {
             container.innerHTML = '';
             return;
         }
@@ -235,7 +353,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return 0;
         }
 
-        const sorted = items.slice().sort((a, b) => getDateValue(b) - getDateValue(a));
+        const sorted = pubItems.slice().sort((a, b) => getDateValue(b) - getDateValue(a));
 
         const ul = document.createElement('ul');
         ul.className = 'mb-0';
@@ -261,7 +379,8 @@ window.addEventListener('DOMContentLoaded', () => {
     function renderPresentations(items) {
         const container = document.getElementById('presentations-list');
         if (!container) return;
-        if (!items || items.length === 0) {
+        const presItems = Array.isArray(items) ? items : (Array.isArray(items && items.items) ? items.items : []);
+        if (!presItems || presItems.length === 0) {
             container.innerHTML = '';
             return;
         }
@@ -285,7 +404,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return '';
         }
 
-        const sorted = items.slice().sort((a, b) => getDateValue(b) - getDateValue(a));
+        const sorted = presItems.slice().sort((a, b) => getDateValue(b) - getDateValue(a));
 
         const ul = document.createElement('ul');
         ul.className = 'mb-0';
