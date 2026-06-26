@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             'site.title': 'Resume - Yuki Dotaka',
-            'site.description': 'A bilingual resume for Yuki Dotaka (Nagoya Institute of Technology).',
+            'site.description': 'This is the personal website of Yuki Dotaka.',
             'brand.name': 'Yuki Dotaka',
             'brand.profileAlt': 'Profile picture of Yuki Dotaka',
             'nav.toggle': 'Toggle navigation',
@@ -27,8 +27,8 @@ window.addEventListener('DOMContentLoaded', () => {
             'awards.heading': 'Awards & Certifications',
         },
         ja: {
-            'site.title': '履歴書 - Start Bootstrap テーマ',
-            'site.description': '日本語と英語を切り替えられる履歴書テンプレートです。',
+            'site.title': 'ホームページ - 堂高友樹',
+            'site.description': '堂高友樹のホームページです．',
             'brand.name': '堂高 友樹',
             'brand.profileAlt': '堂高友樹のプロフィール写真',
             'nav.toggle': 'ナビゲーションを切り替え',
