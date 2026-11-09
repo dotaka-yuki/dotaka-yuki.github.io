@@ -10,8 +10,8 @@
 window.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
-            'site.title': 'Resume - Yuki Dotaka',
-            'site.description': 'This is the personal website of Yuki Dotaka.',
+            'site.title': 'Yuki Dotaka (堂高友樹) | Nagoya Institute of Technology',
+            'site.description': 'Personal website of Yuki Dotaka (堂高友樹), a master\'s student at Nagoya Institute of Technology researching control methods for wheeled drones.',
             'brand.name': 'Yuki Dotaka',
             'brand.profileAlt': 'Profile picture of Yuki Dotaka',
             'nav.toggle': 'Toggle navigation',
@@ -27,10 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
             'awards.heading': 'Awards & Certifications',
         },
         ja: {
-            'site.title': 'ホームページ - 堂高友樹',
-            'site.description': '堂高友樹のホームページです．',
+            'site.title': '堂高友樹 (Yuki Dotaka) | 名古屋工業大学大学院',
+            'site.description': '堂高友樹 (Yuki Dotaka) のホームページです．名古屋工業大学大学院で車輪付きドローンの制御に関する研究を行っています．',
             'brand.name': '堂高 友樹',
-            'brand.profileAlt': '堂高友樹のプロフィール写真',
+            'brand.profileAlt': '堂高友樹 (Yuki Dotaka) のプロフィール写真',
             'nav.toggle': 'ナビゲーションを切り替え',
             'nav.about': '概要',
             'nav.experience': '研究歴',
